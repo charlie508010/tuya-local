@@ -11,7 +11,34 @@ from custom_components.tuya_local.const import (
     CONF_TYPE,
     DOMAIN,
 )
+from custom_components.tuya_local.helpers.device_config import TuyaDeviceConfig
 from custom_components.tuya_local.switch import TuyaLocalSwitch, async_setup_entry
+
+
+@pytest.mark.asyncio
+async def test_restore_configured_dps_on_turn_on_in_single_update():
+    """Test configured DPS values are restored with the switch update."""
+    values = {"10": True, "101": "C5", "102": "F5"}
+    device = Mock()
+    device.get_property.side_effect = values.get
+    device.async_set_properties = AsyncMock()
+    config = next(
+        entity
+        for entity in TuyaDeviceConfig("csha01_fireplace.yaml").all_entities()
+        if entity.name == "Flame"
+    )
+    subject = TuyaLocalSwitch(device, config)
+
+    assert subject.is_on
+    await subject.async_turn_off()
+    device.async_set_properties.assert_awaited_once_with({"10": False})
+
+    device.async_set_properties.reset_mock()
+    values.update({"10": False, "101": "C0", "102": "F0"})
+    await subject.async_turn_on()
+    device.async_set_properties.assert_awaited_once_with(
+        {"10": True, "101": "C5", "102": "F5"}
+    )
 
 
 @pytest.mark.asyncio

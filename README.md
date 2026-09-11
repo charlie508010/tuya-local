@@ -32,6 +32,12 @@ easier to set up using that, or another more recent fork, as an alternative.
 
 ## Installation
 
+[This fork](https://github.com/charlie508010/tuya-local) includes the tested
+Fireplace CSH-A01 device profile and translations. Add that URL to HACS as a
+custom repository in the **Integration** category to install this build.
+The matching dashboard remains optional and is documented in
+[`examples/csha01_fireplace_dashboard`](examples/csha01_fireplace_dashboard/README.md).
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
 Installation is easiest via the [Home Assistant Community Store
@@ -41,7 +47,7 @@ follow the [instructions for adding a custom
 repository](https://hacs.xyz/docs/faq/custom_repositories) and then
 the integration will be available to install like any other.
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=make-all&repository=tuya-local&category=integration)
+[![Open your Home Assistant instance and open this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=charlie508010&repository=tuya-local&category=integration)
 
 ## Configuration
 
@@ -320,4 +326,3 @@ Beyond contributing device configs, here are some areas that could benefit from 
 1. Unit tests. This integration is mostly unit-tested thanks to the upstream project, but there are a few more to complete. Focus on unit tests is on python code, the current coverage is summarised in reports on github, but to get full coverage details you can run the tests yourself.
 2. Once unit tests are complete, the next task is to properly evaluate against the Home Assistant quality scale.
 3. Discovery. Local discovery is currently limited to finding the IP address in the cloud assisted config. Performing discovery in background would allow notifications to be raised when new devices are noticed on the network, and would provide a productKey for the manual config method to use when matching device configs.
-

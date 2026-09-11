@@ -1,0 +1,8 @@
+title: Fireplace CSH-A01
+views:
+  - title: Fireplace CSH-A01
+    path: kamin
+    icon: mdi:fireplace
+    type: panel
+    cards:
+      - type: custom:fireplace-control-card

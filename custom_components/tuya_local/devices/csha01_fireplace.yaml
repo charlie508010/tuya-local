@@ -1,0 +1,256 @@
+name: Electric fireplace
+entities:
+  - entity: switch
+    name: Power
+    translation_only_key: device_power
+    icon: mdi:power
+    dps:
+      - id: 1
+        type: boolean
+        name: switch
+
+  - entity: switch
+    name: Flame
+    translation_only_key: flame
+    icon: mdi:fire
+    restore_on_turn_on:
+      - flame_color
+      - ember_bed_color
+    dps:
+      - id: 10
+        type: boolean
+        name: switch
+      - id: 101
+        type: string
+        name: flame_color
+      - id: 102
+        type: string
+        name: ember_bed_color
+
+  - entity: select
+    name: Operating mode
+    translation_only_key: mode
+    icon: mdi:radiator
+    dps:
+      - id: 4
+        type: string
+        name: option
+        mapping:
+          - dps_val: "OFF"
+            value: "off"
+          - dps_val: LO
+            value: h1
+          - dps_val: HI
+            value: h2
+
+  - entity: select
+    name: Countdown
+    translation_only_key: countdown
+    icon: mdi:timer-outline
+    category: config
+    dps:
+      - id: 19
+        type: string
+        name: option
+        mapping:
+          - dps_val: cancel
+            value: cancel
+          - dps_val: 1h
+            value: 1_hour
+          - dps_val: 2h
+            value: 2_hours
+          - dps_val: 3h
+            value: 3_hours
+          - dps_val: 4h
+            value: 4_hours
+          - dps_val: 5h
+            value: 5_hours
+
+  - entity: select
+    name: Ember bed brightness
+    translation_only_key: ember_bed_brightness
+    icon: mdi:brightness-6
+    category: config
+    dps:
+      - id: 103
+        type: string
+        name: option
+        mapping:
+          - dps_val: "01"
+            value: "1"
+          - dps_val: "02"
+            value: "2"
+          - dps_val: "03"
+            value: "3"
+          - dps_val: "04"
+            value: "4"
+          - dps_val: "05"
+            value: "5"
+
+  - entity: select
+    name: Ember bed color
+    translation_only_key: ember_bed_color
+    icon: mdi:palette
+    category: config
+    dps:
+      - id: 102
+        type: string
+        name: option
+        mapping:
+          - dps_val: F0
+            value: F0
+          - dps_val: F1
+            value: F1
+          - dps_val: F2
+            value: F2
+          - dps_val: F3
+            value: F3
+          - dps_val: F4
+            value: F4
+          - dps_val: F5
+            value: F5
+
+  - entity: select
+    name: Flame brightness
+    translation_only_key: flame_brightness
+    icon: mdi:brightness-7
+    category: config
+    dps:
+      - id: 104
+        type: string
+        name: option
+        mapping:
+          - dps_val: L1
+            value: L1
+          - dps_val: L2
+            value: L2
+          - dps_val: L3
+            value: L3
+          - dps_val: L4
+            value: L4
+          - dps_val: L5
+            value: L5
+
+  - entity: select
+    name: Flame color
+    translation_only_key: flame_color
+    icon: mdi:palette-outline
+    category: config
+    dps:
+      - id: 101
+        type: string
+        name: option
+        mapping:
+          - dps_val: C0
+            value: C0
+          - dps_val: C1
+            value: C1
+          - dps_val: C2
+            value: C2
+          - dps_val: C3
+            value: C3
+          - dps_val: C4
+            value: C4
+          - dps_val: C5
+            value: C5
+
+  - entity: sensor
+    name: Target temperature
+    translation_only_key: target_temperature
+    class: temperature
+    dps:
+      - id: 2
+        name: sensor
+        type: integer
+        unit: C
+        class: measurement
+
+  - entity: sensor
+    name: Current temperature
+    translation_only_key: current_temperature
+    class: temperature
+    dps:
+      - id: 3
+        name: sensor
+        type: integer
+        unit: C
+        class: measurement
+
+  - entity: climate
+    translation_only_key: heater
+    dps:
+      - id: 4
+        type: string
+        name: hvac_mode
+        mapping:
+          - dps_val: "OFF"
+            value: "off"
+          - dps_val: LO
+            value: heat
+          - dps_val: HI
+            value: heat
+      - id: 4
+        type: string
+        name: preset_mode
+        mapping:
+          - dps_val: "OFF"
+            value:
+            hidden: true
+          - dps_val: LO
+            value: h1
+          - dps_val: HI
+            value: h2
+      - id: 2
+        type: integer
+        name: temperature
+        range:
+          min: 0
+          max: 37
+        mapping:
+          - constraint: temperature_unit
+            conditions:
+              - dps_val: f
+                value_redirect: temp_set_f
+                range:
+                  min: 32
+                  max: 99
+      - id: 3
+        type: integer
+        name: current_temperature
+        mapping:
+          - constraint: temperature_unit
+            conditions:
+              - dps_val: f
+                value_redirect: cur_temp_f
+      - id: 13
+        type: string
+        name: temperature_unit
+        mapping:
+          - dps_val: c
+            value: C
+          - dps_val: f
+            value: F
+      - id: 14
+        type: integer
+        name: temp_set_f
+        range:
+          min: 32
+          max: 99
+        hidden: true
+      - id: 15
+        type: integer
+        name: cur_temp_f
+        hidden: true
+
+  - entity: select
+    translation_key: temperature_unit
+    category: config
+    dps:
+      - id: 13
+        type: string
+        name: option
+        mapping:
+          - dps_val: c
+            value: celsius
+          - dps_val: f
+            value: fahrenheit

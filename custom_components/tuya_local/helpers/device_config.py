@@ -359,6 +359,11 @@ class TuyaEntityConfig:
         """Return the mode (used by Number entities)."""
         return self._config.get("mode")
 
+    @property
+    def restore_on_turn_on(self):
+        """Return DPS names whose current values should be restored on turn on."""
+        return self._config.get("restore_on_turn_on", [])
+
     def dps(self):
         """Iterate through the list of dps for this entity."""
         for d in self._config["dps"]:

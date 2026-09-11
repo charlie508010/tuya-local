@@ -361,7 +361,10 @@
                             "standby": "Standby",
                             "fan_only": "Ventilator",
                             "program": "Programm",
-                            "anti_frost": "Frostschutz"
+                            "anti_frost": "Frostschutz",
+                            "off": "Aus",
+                            "h1": "H1",
+                            "h2": "H2"
                         }
                     }
                 }
@@ -903,7 +906,9 @@
                     "high": "Hoch",
                     "rapid_clean": "Schnellreinigung",
                     "schedule": "Zeitplan",
-                    "sleep": "Schlafen"
+                    "sleep": "Schlafen",
+                    "h1": "H1",
+                    "h2": "H2"
                 }
             },
             "activation_mode": {
@@ -1158,6 +1163,29 @@
                     "12_hour": "12 Stunden",
                     "24_hour": "24 Stunden"
                 }
+            },
+            "countdown": {
+                "name": "Countdown",
+                "state": {
+                    "cancel": "Abbrechen",
+                    "1_hour": "1 Stunde",
+                    "2_hours": "2 Stunden",
+                    "3_hours": "3 Stunden",
+                    "4_hours": "4 Stunden",
+                    "5_hours": "5 Stunden"
+                }
+            },
+            "ember_bed_brightness": {
+                "name": "Glutbett-Helligkeit"
+            },
+            "ember_bed_color": {
+                "name": "Glutbettfarbe"
+            },
+            "flame_brightness": {
+                "name": "Flammenhelligkeit"
+            },
+            "flame_color": {
+                "name": "Flammenfarbe"
             }
         },
         "sensor": {
@@ -1366,6 +1394,12 @@
                     "full": "Voll",
                     "foreign_object_detected": "Fremdkörper erkannt"
                 }
+            },
+            "target_temperature": {
+                "name": "Solltemperatur"
+            },
+            "current_temperature": {
+                "name": "Ist-Temperatur"
             }
         },
         "switch": {
@@ -1489,6 +1523,12 @@
             },
             "watermark": {
                 "name": "Wasserzeichen"
+            },
+            "device_power": {
+                "name": "Ein/Aus"
+            },
+            "flame": {
+                "name": "Flamme"
             }
         },
         "text": {

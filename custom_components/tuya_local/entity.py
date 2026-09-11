@@ -52,6 +52,10 @@ class TuyaLocalEntity:
     @property
     def name(self):
         """Return the name for the UI."""
+        if self._config.translation_only_key:
+            # Use the translated display name without changing the config name
+            # that forms part of the entity's unique ID.
+            return super().name
         own_name = self._config.name
         if not own_name and not self.use_device_name:
             # super has the translation logic

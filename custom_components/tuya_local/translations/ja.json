@@ -361,7 +361,10 @@
                             "standby": "スタンバイ",
                             "fan_only": "ファンのみ",
                             "program": "プログラム",
-                            "anti_frost": "霜防止"
+                            "anti_frost": "霜防止",
+                            "off": "オフ",
+                            "h1": "H1",
+                            "h2": "H2"
                         }
                     }
                 }
@@ -903,7 +906,9 @@
                     "high": "高い",
                     "rapid_clean": "急速清掃",
                     "schedule": "スケジュール",
-                    "sleep": "睡眠"
+                    "sleep": "睡眠",
+                    "h1": "H1",
+                    "h2": "H2"
                 }
             },
             "activation_mode": {
@@ -1158,6 +1163,29 @@
                     "12_hour": "12時間",
                     "24_hour": "24時間"
                 }
+            },
+            "countdown": {
+                "name": "Countdown",
+                "state": {
+                    "cancel": "Cancel",
+                    "1_hour": "1 hour",
+                    "2_hours": "2 hours",
+                    "3_hours": "3 hours",
+                    "4_hours": "4 hours",
+                    "5_hours": "5 hours"
+                }
+            },
+            "ember_bed_brightness": {
+                "name": "Ember bed brightness"
+            },
+            "ember_bed_color": {
+                "name": "Ember bed color"
+            },
+            "flame_brightness": {
+                "name": "Flame brightness"
+            },
+            "flame_color": {
+                "name": "Flame color"
             }
         },
         "sensor": {
@@ -1366,6 +1394,12 @@
                     "full": "満充電",
                     "foreign_object_detected": "異物検出"
                 }
+            },
+            "target_temperature": {
+                "name": "Target temperature"
+            },
+            "current_temperature": {
+                "name": "Current temperature"
             }
         },
         "switch": {
@@ -1489,6 +1523,12 @@
             },
             "watermark": {
                 "name": "ウォーターマーク"
+            },
+            "device_power": {
+                "name": "Power"
+            },
+            "flame": {
+                "name": "炎"
             }
         },
         "text": {

@@ -121,7 +121,7 @@
                 },
                 "device": {
                     "name": "Enhet",
-                    "description": "Den IR-enhet som kommandot ska skickas till. Detta är valfritt och endast nödvändigt om kommandot sparades med en enhet." 
+                    "description": "Den IR-enhet som kommandot ska skickas till. Detta är valfritt och endast nödvändigt om kommandot sparades med en enhet."
                 }
             }
         }
@@ -361,7 +361,10 @@
                             "standby": "Standby",
                             "fan_only": "Endast fläkt",
                             "program": "Program",
-                            "anti_frost": "Antifrost"
+                            "anti_frost": "Antifrost",
+                            "off": "Av",
+                            "h1": "H1",
+                            "h2": "H2"
                         }
                     }
                 }
@@ -903,7 +906,9 @@
                     "high": "Hög",
                     "rapid_clean": "Snabbrengöring",
                     "schedule": "Schema",
-                    "sleep": "Sömn"
+                    "sleep": "Sömn",
+                    "h1": "H1",
+                    "h2": "H2"
                 }
             },
             "activation_mode": {
@@ -1158,6 +1163,29 @@
                     "12_hour": "12 timmar",
                     "24_hour": "24 timmar"
                 }
+            },
+            "countdown": {
+                "name": "Countdown",
+                "state": {
+                    "cancel": "Cancel",
+                    "1_hour": "1 hour",
+                    "2_hours": "2 hours",
+                    "3_hours": "3 hours",
+                    "4_hours": "4 hours",
+                    "5_hours": "5 hours"
+                }
+            },
+            "ember_bed_brightness": {
+                "name": "Ember bed brightness"
+            },
+            "ember_bed_color": {
+                "name": "Ember bed color"
+            },
+            "flame_brightness": {
+                "name": "Flame brightness"
+            },
+            "flame_color": {
+                "name": "Flame color"
             }
         },
         "sensor": {
@@ -1366,6 +1394,12 @@
                     "full": "Full",
                     "foreign_object_detected": "Främmande föremål upptäckt"
                 }
+            },
+            "target_temperature": {
+                "name": "Target temperature"
+            },
+            "current_temperature": {
+                "name": "Current temperature"
             }
         },
         "switch": {
@@ -1489,6 +1523,12 @@
             },
             "watermark": {
                 "name": "Vattenstämpel"
+            },
+            "device_power": {
+                "name": "Power"
+            },
+            "flame": {
+                "name": "Låga"
             }
         },
         "text": {

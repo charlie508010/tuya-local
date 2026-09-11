@@ -37,7 +37,27 @@ class TuyaLocalSwitch(TuyaLocalEntity, SwitchEntity):
         super().__init__()
         dps_map = self._init_begin(device, config)
         self._switch_dps = dps_map.pop("switch")
+        self._restore_on_turn_on_dps = []
+        self._restore_on_turn_on_values = {}
+        for name in config.restore_on_turn_on:
+            dps = dps_map.pop(name, None)
+            if dps is None:
+                _LOGGER.warning(
+                    "%s/%s: restore_on_turn_on DPS %s was not found",
+                    config._device.config,
+                    config.config_id,
+                    name,
+                )
+            else:
+                self._restore_on_turn_on_dps.append(dps)
         self._init_end(dps_map)
+
+    def _remember_restore_on_turn_on_values(self):
+        """Remember configured values before the device resets them."""
+        for dps in self._restore_on_turn_on_dps:
+            value = dps.get_value(self._device)
+            if value is not None:
+                self._restore_on_turn_on_values[dps.id] = value
 
     @property
     def device_class(self):
@@ -60,14 +80,28 @@ class TuyaLocalSwitch(TuyaLocalEntity, SwitchEntity):
         # if there is no switch, it is always on if available.
         if self._switch_dps is None:
             return self.available
-        return self._switch_dps.get_value(self._device)
+        value = self._switch_dps.get_value(self._device)
+        if value:
+            self._remember_restore_on_turn_on_values()
+        return value
 
     async def async_turn_on(self, **kwargs):
         """Turn the switch on"""
         _LOGGER.info("%s turning on", self._config.config_id)
-        await self._switch_dps.async_set_value(self._device, True)
+        settings = self._switch_dps.get_values_to_set(self._device, True)
+        for dps in self._restore_on_turn_on_dps:
+            if dps.id in self._restore_on_turn_on_values:
+                settings.update(
+                    dps.get_values_to_set(
+                        self._device,
+                        self._restore_on_turn_on_values[dps.id],
+                        settings,
+                    )
+                )
+        await self._device.async_set_properties(settings)
 
     async def async_turn_off(self, **kwargs):
         """Turn the switch off"""
         _LOGGER.info("%s turning off", self._config.config_id)
+        self._remember_restore_on_turn_on_values()
         await self._switch_dps.async_set_value(self._device, False)

@@ -182,6 +182,10 @@ class TestProperties:
     def test_name_returns_config_name(self, entity):
         assert entity.name == "Test Entity"
 
+    def test_name_uses_translation_only_key(self, entity, mock_config):
+        mock_config.translation_only_key = "only_key"
+        assert entity.name == "translated_name"
+
     def test_name_falls_back_to_super(self, entity, mock_config):
         mock_config.name = None
         mock_config.translation_key = "some_key"

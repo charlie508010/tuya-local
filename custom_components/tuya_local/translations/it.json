@@ -361,7 +361,10 @@
                             "standby": "Standby",
                             "fan_only": "Solo ventola",
                             "program": "Programma",
-                            "anti_frost": "Antigelo"
+                            "anti_frost": "Antigelo",
+                            "off": "Spento",
+                            "h1": "H1",
+                            "h2": "H2"
                         }
                     }
                 }
@@ -903,7 +906,9 @@
                     "high": "Alto",
                     "rapid_clean": "Pulizia rapida",
                     "schedule": "Programma",
-                    "sleep": "Sonno"
+                    "sleep": "Sonno",
+                    "h1": "H1",
+                    "h2": "H2"
                 }
             },
             "activation_mode": {
@@ -1158,6 +1163,29 @@
                     "12_hour": "12 ore",
                     "24_hour": "24 ore"
                 }
+            },
+            "countdown": {
+                "name": "Countdown",
+                "state": {
+                    "cancel": "Cancel",
+                    "1_hour": "1 hour",
+                    "2_hours": "2 hours",
+                    "3_hours": "3 hours",
+                    "4_hours": "4 hours",
+                    "5_hours": "5 hours"
+                }
+            },
+            "ember_bed_brightness": {
+                "name": "Ember bed brightness"
+            },
+            "ember_bed_color": {
+                "name": "Ember bed color"
+            },
+            "flame_brightness": {
+                "name": "Flame brightness"
+            },
+            "flame_color": {
+                "name": "Flame color"
             }
         },
         "sensor": {
@@ -1366,6 +1394,12 @@
                     "full": "Carica completa",
                     "foreign_object_detected": "Oggetto estraneo rilevato"
                 }
+            },
+            "target_temperature": {
+                "name": "Target temperature"
+            },
+            "current_temperature": {
+                "name": "Current temperature"
             }
         },
         "switch": {
@@ -1489,6 +1523,12 @@
             },
             "watermark": {
                 "name": "Filigrana"
+            },
+            "device_power": {
+                "name": "Power"
+            },
+            "flame": {
+                "name": "Fiamma"
             }
         },
         "text": {
